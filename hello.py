@@ -68,3 +68,8 @@ def hello_F(): #今回は入力を受け取らないのでここも無し
 @app.route("/G")
 def original():
     return render_template('original.html')
+
+@app.route("/H")
+def index():
+    return render_template('index.html')
+

@@ -73,3 +73,6 @@ def original():
 def index():
     return render_template('index.html')
 
+@app.route("/H")
+def index():
+    return render_template('index.html')

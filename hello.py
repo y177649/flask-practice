@@ -79,10 +79,22 @@ def hello_F(): #今回は入力を受け取らないのでここも無し
 def original():
     return render_template('original.html')
 
-@app.route("/H")
+@app.route("/H",methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    if request.method == 'GET':
+        posts = Post.query.all()
+        return render_template('index.html',posts=posts)
 
 @app.route("/create",methods=['GET','POST'])
 def create():
-    return render_template('create.html')
+    if request.method == "POST":
+        title = request.form.get('title')
+        body =request.form.get('body')
+
+        post = Post(title=title,body=body)
+
+        db.session.add(post)
+        db.session.commit()
+        return redirect('/H')
+    else:
+        return render_template('create.html')

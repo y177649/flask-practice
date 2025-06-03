@@ -98,3 +98,16 @@ def create():
         return redirect('/H')
     else:
         return render_template('create.html')
+
+@app.route("/<int:id>/edit",methods=['GET','POST'])
+def edit(id):
+    post = Post.query.get(id)
+    if request.method == "GET":
+        return render_template('edit.html',post=post)
+
+    else:
+        post.title = request.form.get('title')
+        post.body =request.form.get('body')
+
+        db.session.commit()
+        return redirect('/H')

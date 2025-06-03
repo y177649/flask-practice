@@ -5,6 +5,7 @@
     {% for post in posts %}
     <article>
         <h2>{{ post.title }}</h2>
+        <a href="/{{post.id}}/edit" role="button">編集</a>
         <p>作成日:{{ post.created_at }}</p>
         <p>{{ post.body }}</p>
     </article>  

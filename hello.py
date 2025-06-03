@@ -1,3 +1,7 @@
+#環境変数設定と起動コマンド
+#export FLASK_APP=hello.py
+#flask run --debug
+
 from flask import Flask
 from flask import render_template , request ,redirect
 from flask_sqlalchemy import SQLAlchemy
@@ -111,3 +115,11 @@ def edit(id):
 
         db.session.commit()
         return redirect('/H')
+
+@app.route("/<int:id>/delete",methods=['GET'])
+def delete(id):
+    post = Post.query.get(id)
+
+    db.session.delete(post)
+    db.session.commit()
+    return redirect('/H')

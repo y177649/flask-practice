@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template
+from flask import render_template , request ,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pytz
@@ -82,3 +82,7 @@ def original():
 @app.route("/H")
 def index():
     return render_template('index.html')
+
+@app.route("/create",methods=['GET','POST'])
+def create():
+    return render_template('create.html')

@@ -1,5 +1,8 @@
-{% extends "base.html" %}
+{% extends "bootstrap/base.html" %}
+{% block title %}TOPページ{% endblock %}
+
 {% block content %}
+<div class="container">
     <h1>APP</h1>
     <a href="/create" role="button">新規登録画面</a>
     <a href="/logout" role="button">ログアウト</a>
@@ -12,4 +15,5 @@
         <p>{{ post.body }}</p>
     </article>  
     {% endfor %}
+</div>
 {% endblock %}

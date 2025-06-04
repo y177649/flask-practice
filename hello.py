@@ -10,11 +10,13 @@ import pytz
 from flask_login import login_user, logout_user, login_required, LoginManager, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from flask_bootstrap import Bootstrap 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SECRET_KEY'] = os.urandom(24)
 db = SQLAlchemy(app)
+bootstrap = Bootstrap(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
